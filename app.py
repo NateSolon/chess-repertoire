@@ -71,4 +71,5 @@ def update_output(n_clicks, username, color):
 
         return fig
 
-app.run_server(debug=True, use_reloader=True)
+if name == '__main__':
+    app.run_server(debug=True, use_reloader=True)
