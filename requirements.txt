@@ -1,3 +1,4 @@
-plotly
+gunicorn
 numpy
+plotly
 requests
