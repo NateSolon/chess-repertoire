@@ -7,6 +7,9 @@ import plotly.graph_objects as go
 
 from common import *
 
+width = 1400
+height = 700
+
 app = dash.Dash(__name__)
 
 server = app.server
@@ -20,12 +23,14 @@ games = pgn.split('\n\n\n')[:-1]
 nodes = build_tree(games, hero)
 data = format_data(nodes)
 fig = go.Figure(data)
+fig.update_layout(title_text=f"DrNykterstein's White Repertoire", width=width, height=height)
+
 
 app.layout = html.Div([
     html.Div([
         html.Div([
             html.Label('Lichess Username'),
-            dcc.Input(id='username', value='CheckRaiseMate', type='text'),
+            dcc.Input(id='username', value='DrNykterstein', type='text'),
         ], style={'textAlign': 'left'}, className='flex-item'),
 
         html.Div([
@@ -67,7 +72,7 @@ def update_output(n_clicks, username, color):
         nodes = build_tree(games, hero)
         data = format_data(nodes)
         fig = go.Figure(data=data)
-        fig.update_layout(title_text=f"{username}'s {color} repertoire")
+        fig.update_layout(title_text=f"{username}'s {color.capitalize()} Repertoire", width=width, height=height)
 
         return fig
 
