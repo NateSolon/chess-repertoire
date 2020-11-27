@@ -4,3 +4,4 @@ venv
 .env
 .ipynb_checkpoints
 .python-version
+sankey.ipynb
