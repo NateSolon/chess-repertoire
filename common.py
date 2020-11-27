@@ -1,7 +1,9 @@
+import functools
 import itertools
-import plotly.graph_objects as go
 import numpy as np
+import plotly.graph_objects as go
 import requests
+
 from datetime import datetime
 
 def get_points(result, hero):
@@ -20,6 +22,7 @@ def score2color(score):
 
 color_codes = ('#000000', '#FFFFFF')
 
+@functools.lru_cache
 def get_pgn(username, color, token=None, perfType='blitz', games=10):
     params = dict(
         color = color,
